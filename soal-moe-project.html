@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // SOAL 1
+
+        document.writeln("Soal 1");
+        document.writeln("<br>");
+        function consecutiveOnes(arr,n){
+            let count = 0;
+            
+            let result = 0;
+
+            for(let i = 0; i < n; i++){
+                if (arr[i] == 0)
+                count = 0;
+
+                else{
+                    count++;
+                    result = Math.max(result, count);
+                }
+            }
+            return result;
+        }
+
+        // let arr = new Array(1,1,0,0,1,1,1);
+        let arr = new Array(1,0,1,0,1,1);
+        let n = arr.length;
+        document.writeln(consecutiveOnes(arr,n))
+
+        // END SOAL 1
+        
+        // SOAL 2
+        
+        document.writeln("<br>");
+        document.writeln("Soal 2");
+        document.writeln("<br>");
+        function reverseString(str) {
+            let newString = "";
+            for (let i  = str.length - 1; i >= 0; i--) {
+                newString += str[i];
+            }
+            return newString;
+        }
+
+document.writeln(reverseString(["H","E","L","L","O"]));
+
+
+        // END SOAL 2
+
+        // SOAL 3
+        document.writeln("<br>");
+        document.writeln("Soal 3");
+        document.writeln("<br>");
+        function balancedBrackets(inpt){
+            let stack = [];
+
+            for(let i = 0; i < inpt.length; i++){
+                let x = inpt[i];
+                
+                if(x == '(' || x == '[' || x == '{'){
+                    stack.push(x);
+                    continue;
+                }
+
+                if(stack.length == 0){
+                    return false;
+                }
+
+                let check;
+                switch (x) {
+                    case ')':
+                        check = stack.pop();
+                        if (check == '{' || check == '[') {
+                            return false;
+                        }
+                        break;
+                    case '}':
+                        check = stack.pop();
+                        if (check == '(' || check == '[') {
+                            return false;
+                        }               
+                        break;
+                    case ']':
+                        check = stack.pop();
+                        if (check == '(' || check == '{') {
+                            return false;
+                        }               
+                        break;
+                }
+
+            }
+            
+            return (stack.length == 0)
+        }
+
+        let inpt = "([{}])";
+
+        if (balancedBrackets(inpt)) {
+            document.writeln("YES")
+        } else {
+            document.writeln("NO")
+        }
+    </script>
+</body>
+</html>
